@@ -4,7 +4,7 @@ export function formatStory(story) {
   
   // Randomly add line breaks between sentences (30% chance)
   let formattedStory = sentences.map((sentence, index) => {
-    const addBreak = Math.random() > 0.7 && index < sentences.length - 1;
+    const addBreak = Math.random() > 0.5 && index < sentences.length - 1;
     return sentence.trim() + (addBreak ? '\n\n' : ' ');
   }).join('');
 
@@ -24,7 +24,7 @@ export function formatStory(story) {
 }
 
 export function getRandomBoxSize() {
-  const widths = [400, 450, 500, 550, 600];
+  const widths = [400, 500, 600, 700];
   const heights = [500, 550, 600, 650, 700];
   
   return {

@@ -24,7 +24,7 @@ export function formatStory(story) {
 }
 
 export function getRandomBoxSize() {
-  const widths = [400, 500, 600, 700];
+  const widths = [400, 600, 800];
   const heights = [500, 550, 600, 650, 700];
   
   return {

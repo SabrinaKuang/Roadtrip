@@ -38,10 +38,12 @@
 }
 
 .music {
-  align-self: flex-start;
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
   background-color: rgba(225, 242, 247, 0.618);
   padding: 2rem;
-  width: 300px;
+  width: 250px;
   height: 300px;
   border-radius: 8px;
   display: flex;

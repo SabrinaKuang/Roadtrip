@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { stories } from './stories'
 import { fonts } from './fonts'
@@ -16,6 +16,23 @@ function App() {
   const [audioEnabled, setAudioEnabled] = useState(false)
   const [formattedStory, setFormattedStory] = useState(formatStory(stories[0]))
 
+  const getRandomDuration = () => {
+    const options = [15, 20, 25, 30];
+    return options[Math.floor(Math.random() * options.length)] * 1000; // Convert to milliseconds
+  }
+
+  // Auto-advance songs on timer
+  useEffect(() => {
+    if (!audioEnabled) return;
+
+    const duration = getRandomDuration();
+    const timer = setTimeout(() => {
+      setSongIndex((prev) => (prev + 1) % songs.length);
+    }, duration);
+
+    return () => clearTimeout(timer);
+  }, [songIndex, audioEnabled]);
+
   const nextStory = () => {
     // Enable audio on first click
     if (!audioEnabled) {
@@ -27,14 +44,12 @@ function App() {
       return;
     }
 
-    // Randomize story, song, font, and box size
+    // Randomize story, font, and box size
     const randomStoryIndex = Math.floor(Math.random() * stories.length)
-    const randomSongIndex = Math.floor(Math.random() * songs.length)
     const randomFontIndex = Math.floor(Math.random() * fonts.length)
     const newBoxSize = getRandomBoxSize()
 
     setStoryIndex(randomStoryIndex)
-    setSongIndex(randomSongIndex)
     setFontIndex(randomFontIndex)
     setBoxSize(newBoxSize)
     setFormattedStory(formatStory(stories[randomStoryIndex]))

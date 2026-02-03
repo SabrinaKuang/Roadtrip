@@ -23,14 +23,14 @@ function App() {
     if (isTyping) {
       return;
     }
-    
-    // Go to next story and song in sequence
-    const nextStoryIndex = (storyIndex + 1) % stories.length
-    const nextSongIndex = (songIndex + 1) % songs.length
+
+    // Randomize story, song, and font
+    const randomStoryIndex = Math.floor(Math.random() * stories.length)
+    const randomSongIndex = Math.floor(Math.random() * songs.length)
     const randomFontIndex = Math.floor(Math.random() * fonts.length)
-    
-    setStoryIndex(nextStoryIndex)
-    setSongIndex(nextSongIndex)
+
+    setStoryIndex(randomStoryIndex)
+    setSongIndex(randomSongIndex)
     setFontIndex(randomFontIndex)
   }
 

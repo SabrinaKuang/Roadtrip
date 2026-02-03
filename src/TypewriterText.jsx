@@ -1,51 +1,40 @@
-import React, { useEffect, useState } from "react";
-
-let timer;
+import React, { useEffect, useState, useRef } from "react";
 
 export default function TypewriterText({ story, onComplete, onStartTyping }) {
   const [text, setText] = useState("");
-  const [started, setStarted] = useState(false);
+  const timerRef = useRef(null);
 
-  const handleGenerate = () => {
-    if (started) {
-      return;
+  useEffect(() => {
+    // Clear any existing timer
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
     }
-    setStarted(true);
+
+    // Reset text
+    setText("");
+
+    // Notify typing started
     if (onStartTyping) onStartTyping();
-    
-    let i = -1;
-    timer = setInterval(() => {
+
+    // Start typing animation
+    let i = 0;
+    timerRef.current = setInterval(() => {
+      setText(story.slice(0, i + 1));
       i++;
-      if (i === story.length - 1) {
-        clearInterval(timer);
-        setStarted(false);
+
+      if (i > story.length) {
+        clearInterval(timerRef.current);
         if (onComplete) onComplete();
       }
-      setText((prev) => prev + story[i]);
-    }, 5);
-  };
+    }, 10);
 
-  const handleReset = () => {
-    setText("");
-    clearInterval(timer);
-    setStarted(false);
-  };
-
-  // Auto-start when story changes
-  useEffect(() => {
-    handleReset();
-    handleGenerate();
+    // Cleanup on unmount or story change
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
   }, [story]);
 
-  useEffect(() => {
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  return (
-    <div>
-      {text}
-    </div>
-  );
+  return <div>{text}</div>;
 }

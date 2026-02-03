@@ -22,7 +22,7 @@ export default function TypewriterText({ story, onComplete, onStartTyping }) {
         if (onComplete) onComplete();
       }
       setText((prev) => prev + story[i]);
-    }, 10);
+    }, 5);
   };
 
   const handleReset = () => {

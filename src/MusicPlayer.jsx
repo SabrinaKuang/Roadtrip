@@ -55,7 +55,7 @@ export default function MusicPlayer({ song, shouldPlay }) {
       />
 
       <div className="music-header">
-        Now Playing...
+        Now Playing... 🎶
       </div>
 
       <div className="album-cover">

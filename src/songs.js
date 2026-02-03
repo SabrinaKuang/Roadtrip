@@ -19,5 +19,33 @@ export const songs = [
     coverImage: "./assets/covers/Lynyrd.png", 
     audioUrl: "./assets/music/Sweet.mp3", 
     startTime: 70 
+  },
+  {
+    title: "Don't Stop Believin'",
+    artist: "Journey",
+    coverImage: "./assets/covers/Journey.png",
+    audioUrl: "./assets/music/Dont.mp3", 
+    startTime: 0 
+  }, 
+  {
+    title: "Hotel California",
+    artist: "Eagles",
+    coverImage: "./assets/covers/EE.png",
+    audioUrl: "./assets/music/Hotel.mp3", 
+    startTime: 0 
+  },
+  {
+    title: "Born To Be Wild",
+    artist: "Steppenwolf",
+    coverImage: "./assets/covers/Steppenwolf.png",
+    audioUrl: "./assets/music/Born.mp3", 
+    startTime: 0 
+  },
+  {
+    title: "Life is a Highway",
+    artist: "Rascal Flatts",
+    coverImage: "./assets/covers/Rascal.png",
+    audioUrl: "./assets/music/Life.mp3", 
+    startTime: 0 
   }
 ];

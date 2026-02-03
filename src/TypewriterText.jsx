@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import StyledText from "./StyledText";
 
 export default function TypewriterText({ story, onComplete, onStartTyping }) {
   const [text, setText] = useState("");
@@ -36,5 +37,5 @@ export default function TypewriterText({ story, onComplete, onStartTyping }) {
     };
   }, [story]);
 
-  return <div>{text}</div>;
+  return <StyledText text={text} />;
 }
